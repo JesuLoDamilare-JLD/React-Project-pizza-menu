@@ -85,4 +85,4 @@ root.render(
 //COMPONENTS AS BUILDING BLOCKS - React is all about components
 //Each component has its Data Logic and Appearance
 
-//Creating and Reusing a component
+//What is JSX - Declarative syntax what component looks like and how they work. Components must return a block of JSX
