@@ -110,7 +110,7 @@ function Menu() {
     </main>
   );
 }
-function Pizza(props) {
+/* function Pizza(props) {
   // multiple returns - it used outside JSX
   if (props.pizzaObj.soldOut) return null;
 
@@ -124,11 +124,27 @@ function Pizza(props) {
       </div>
     </li>
   );
+} */
+//Destructing props
+function Pizza({ pizzaObj }) {
+  // multiple returns - it used outside JSX
+  if (pizzaObj.soldOut) return null;
+
+  return (
+    <li className="pizza">
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
+      <div>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.price}</span>
+      </div>
+    </li>
+  );
 }
 
 const Footer = () => {
   const hour = new Date().getHours();
-  const openHour = 12;
+  const openHour = 7;
   const closeHour = 24;
   const isOPen = hour >= openHour && hour <= closeHour;
   console.log(isOPen);
@@ -138,7 +154,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       {isOPen ? (
-        <Order closeHour={closeHour} />
+        <Order closeHour={closeHour} openHour={openHour} />
       ) : (
         <p>
           We're happy to welcome you between {openHour}:00 and {closeHour}:00.
@@ -148,11 +164,23 @@ const Footer = () => {
   );
 };
 
-function Order(props) {
+/* function Order(props) {
   return (
     <div className="order">
       <p>
         We're open until {props.closeHour}:00. Come visit us or order online.
+      </p>
+      <button className="btn">Order</button>
+    </div>
+  );
+} */
+//Distructuring props
+function Order({ closeHour, openHour }) {
+  return (
+    <div className="order">
+      <p>
+        We're open from {openHour} until {closeHour}:00. Come visit us or order
+        online.
       </p>
       <button className="btn">Order</button>
     </div>
